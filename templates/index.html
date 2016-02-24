@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker! Web me</title>
+    <script src="{{ static_url('scripts/script.js') }}" type="application/javascript"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td></td>
+            <td>Id</td>
+            <td>Image</td>
+            <td>Status</td>
+            <td>Command</td>
+        </tr>
+    {% for item in containers %}
+        <tr>
+            <td><input type="radio" name="container" value="{{ item["Id"] }}"/></td>
+            <td>{{ item["Id"] }}</td>
+            <td>{{ item["Image"] }}</td>
+            <td>{{ item["Status"] }}</td>
+            <td>{{ item["Command"] }}</td>
+        </tr>
+    {% end %}
+    </table>
+    <input type="button" onclick="refresh_container()" value="Refresh" />
+    <input type="button" onclick="start_container()" value="Start" />
+    <input type="button" onclick="stop_container()" value="Stop" />
+</body>
+</html>
